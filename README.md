@@ -9,9 +9,35 @@ It has a fixed block size of 128 bits, and a key size of 128, 192, or 256 bits.
 AES operates on a 4 × 4 column-major order array of bytes, termed the state
 # PROGRAM:
 
+
+~~~
+
+#include <stdio.h>
+#include <string.h>
+
+void xorCrypt(char *in, char *key) {
+  for (int i = 0; in[i]; i++) in[i] ^= key[i % strlen(key)];
+}
+
+int main() {
+  char msg[] = "RANJANA", key[] = "secretkey";
+  printf("Original: %s\n", msg);
+  xorCrypt(msg, key);
+  printf("Encrypted: %s\n", msg);
+  xorCrypt(msg, key);
+  printf("Decrypted: %s\n", msg);
+  return 0;
+}
+
+
+~~~
+
 # OUTPUT:
+
+
+<img width="454" height="343" alt="image" src="https://github.com/user-attachments/assets/f070fabb-e7e1-4684-aeae-7d12d95bc5d9" />
 
 
 # RESULT:
 
-
+The program was runned successfully.
